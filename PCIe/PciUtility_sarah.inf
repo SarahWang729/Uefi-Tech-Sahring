@@ -1,0 +1,23 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PciUtility_sarah
+  FILE_GUID                      = 1207ae65-51de-4b54-af64-7041437e206e
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PciUtilityMain
+
+[Sources]
+  PciUtility_sarah.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+
+[Protocols]
+  gEfiPciRootBridgeIoProtocolGuid
