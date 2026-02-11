@@ -1,0 +1,27 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = TimerEvent_sarah
+  FILE_GUID                      = c90210e5-8f61-4a47-a1a8-dca7918f3e2d
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = TimerEventInitialize
+
+[Sources]
+  TimerEvent.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  NtEmulatorPkg/Project.dec
+
+[LibraryClasses]
+  UefiLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+
+[Protocols]
+  gTimerEventMarkerProtocolGuid
+
+[Depex]
+ TRUE
