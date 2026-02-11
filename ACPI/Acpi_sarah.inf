@@ -1,0 +1,19 @@
+[Defines]
+  INF_VERSION            = 0x00010005
+  BASE_NAME              = DumpFadt
+  FILE_GUID              = a46bfd3a-78f3-4ea6-bdd4-1161757e5388
+  MODULE_TYPE            = UEFI_APPLICATION
+  VERSION_STRING         = 1.0
+  ENTRY_POINT            = UefiMain
+
+[Sources]
+  DumpFadt.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiLib
+  UefiApplicationEntryPoint
+  UefiBootServicesTableLib
+  PrintLib
