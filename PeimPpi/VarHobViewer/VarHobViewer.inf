@@ -1,0 +1,24 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = VarHobViewer_sarah
+  FILE_GUID                      = 76f58aa2-01c8-42a8-8172-7862a7ee65d1
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  VarHobViewer.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  NtEmulatorPkg/Project.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  PrintLib
+  HobLib

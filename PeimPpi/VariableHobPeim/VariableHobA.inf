@@ -1,0 +1,29 @@
+[Defines]
+  INF_VERSION = 0x00010005
+  BASE_NAME = VariableHobPeim
+  FILE_GUID = 8c1d6b34-66e2-4f91-b00a-7714cc0fb1c9
+  MODULE_TYPE = PEIM
+  VERSION_STRING = 1.0
+  ENTRY_POINT = VariableHobAEntry
+
+[Sources]
+  VariableHobA.c
+  ../VariableHobPpi.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  NtEmulatorPkg/Project.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  PeiServicesLib
+  DebugLib
+  BaseMemoryLib
+  MemoryAllocationLib
+
+[Ppis]
+  gVariableHobPpiGuid
+  gEfiPeiReadOnlyVariable2PpiGuid
+
+[Depex]
+  TRUE

@@ -1,0 +1,65 @@
+Provider PEIM (VariableHobA)
+
+          +-------------------+
+          |   Other PEIM/DXE  |
+          |   Consumer Code   |
+          +---------+---------+
+                    |
+                    | Calls VARIABLE_HOB_PPI
+                    v
+          +-------------------+
+          |  VARIABLE_HOB_PPI |
+          |  (GetVariable /   |
+          |   CreateHob)      |
+          +---------+---------+
+                    |
+     +--------------+-----------------+
+     |                                |
+     v                                v
++-------------------+         +-------------------+
+| PeimGetVariable() |         | PeimCreateHob()   |
++-------------------+         +-------------------+
+     |                                |
+     | Locate ReadOnlyVariable2 PPI   |  Call PeiServicesCreateHob
+     v                                v
++-------------------------+   +-------------------------+
+| ReadOnlyVariable2 PPI   |   | PEI Services HOB system |
+| GetVariable()           |   +-------------------------+
++-------------------------+
+     |
+     v
+  Returns variable data
+     |
+     v
+Caches small copy in mCache
+     |
+     v
+Return EFI_SUCCESS to caller
+
+--------------------------------------------------------------------
+
+Consumer PEIM (VariableHobB)
+
+      +-------------------+
+      |   VariableHobB    |  <-- Consumer PEIM
+      +-------------------+
+               |
+               | PeiServicesLocatePpi(&gVariableHobPpiGuid)
+               v
+      +-------------------+
+      | VARIABLE_HOB_PPI  |  <-- Provided by VariableHobA
+      | GetVariable()     |
+      | CreateHob()       |
+      +-------------------+
+        |             |
+        |             |
+        |             v
+        |   PeiServicesCreateHob()
+        |   (allocates GUID HOB in memory)
+        |
+        v
+ReadOnlyVariable2 PPI (inside VariableHobA)
+        |
+        v
+   GetVariable() returns
+   the requested variable
