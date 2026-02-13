@@ -1,0 +1,20 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = AnyKeyReset_sarah
+  FILE_GUID                      = 8F3A3D2B-6B59-4D2B-9C2E-7C8B2A1B9D11
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = AnyKeyKbcResetEntryPoint
+
+[Sources]
+  AnyKeyReset.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiLib
+  UefiApplicationEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  BaseLib
